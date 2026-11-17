@@ -37,3 +37,4 @@ if (motionButton) {
     motionButton.textContent = paused ? motionButton.dataset.play : motionButton.dataset.pause;
   });
 }
+if (document.querySelector('.network-canvas')) import('./network.js').catch(() => document.documentElement.classList.add('network-static'));
