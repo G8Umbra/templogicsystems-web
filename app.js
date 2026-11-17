@@ -26,3 +26,14 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
   }, { threshold: 0.08 });
   sections.forEach(section => observer.observe(section));
 } else sections.forEach(section => section.classList.add('is-visible'));
+
+const motionButton = document.querySelector('.network-control');
+if (motionButton) {
+  motionButton.hidden = false;
+  motionButton.addEventListener('click', () => {
+    const paused = motionButton.getAttribute('aria-pressed') !== 'true';
+    motionButton.setAttribute('aria-pressed', String(paused));
+    motionButton.closest('.field-hero').classList.toggle('network-paused', paused);
+    motionButton.textContent = paused ? motionButton.dataset.play : motionButton.dataset.pause;
+  });
+}
